@@ -8,12 +8,17 @@
   
   
   /* Column Stuff */
+
+  .col-lg-3{
+    position: relative;
+  }
+
   .col-lg-3 {
     padding: 10px;
     height: 250px;
-    align-self: center;
-    width: 300px;
-    
+    /* width: 485px; */
+    width: 400px;
+    margin-top: 20px;
   }
   
   .p-3{
@@ -53,6 +58,7 @@
     float: left;
     clear: right;
     margin-left: 10px;
+    border: 2px solid rgb(127, 224, 135);;
   }
   
   .airlineName{
@@ -64,6 +70,9 @@
   .flightNumber{
     padding-left: 10px;
     font-size: 1.2em;
+
+    position: relative;
+    top: 10px;
   }
   
   /* Time, Destination, and Gate */
@@ -73,6 +82,9 @@
     font-size: 1.3em;
     width: 50%;
     padding-left: 25px;
+
+    position: relative;
+    bottom: 20px;
   }
   
   .timeIdentification{
@@ -89,10 +101,11 @@
     clear: left;
     font-size: 1.25em;
     width: 50%;
+    text-align: center;
   }
   
   .airport{
-    width: 100%;
+    width: 100%
   }
   
   .gateInfo{
@@ -126,6 +139,90 @@
     top: 16px;
     right: 21px;
     color: black;
+  }
+
+  .weatherInfo{
+    float: left;
+    margin-top: 8px;
+    width: 100%;
+  }
+  
+
+  .weather{
+    color: white;
+  }
+
+  /* Scroll Text */
+
+  .weatherInfo {
+    border: 3px solid rgb(127, 224, 135);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .weather {
+    /* animation properties */
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    
+    -moz-animation: my-animation 15s linear infinite;
+    -webkit-animation: my-animation 15s linear infinite;
+    animation: my-animation 15s linear infinite;
+  }
+  
+  /* for Firefox */
+  @-moz-keyframes my-animation {
+    from { -moz-transform: translateX(100%); }
+    to { -moz-transform: translateX(-100%); }
+  }
+  
+  /* for Chrome */
+  @-webkit-keyframes my-animation {
+    from { -webkit-transform: translateX(100%); }
+    to { -webkit-transform: translateX(-100%); }
+  }
+  
+  @keyframes my-animation {
+    from {
+      -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+    to {
+      -moz-transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+  }
+
+  .weather, .notification {
+    font-size: 0.67em;
+  }
+
+  /* .weatherInfo img {
+    width: 10px;
+    height: 40px;
+  } */
+
+  /* Notification */
+
+  .notification{
+    color: red;
+    background-color: black;
+    position: relative;
+    left: 65px;
+    top: 10px;
+    border: 2px solid red;
+    border-radius: 50%;
+    padding-left: 6px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    font-weight: bolder;
+  }
+
+  .notificationText{
+    color: red;
   }
   
   /* section{
@@ -190,24 +287,6 @@
         background-position-x: -1000px; 
       }
     } */
-  
-  
-  @media(min-width: 768px) and (max-width: 1304px){
-    .airlineImg{
-      height: 30px;
-      width: 30px;
-    }
-  
-    .airlineInfo{
-      font-size: 0.90em;
-    }
-  
-    .timeInfo{
-      font-size: 0.90em;
-    }
-  
-    .destination{
-      font-size: 0.90em;
-    }
-  }
+
+
   
