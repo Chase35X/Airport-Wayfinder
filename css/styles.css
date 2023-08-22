@@ -159,9 +159,8 @@
   .weatherInfo {
     border: 3px solid rgb(127, 224, 135);
     border-radius: 5px;
-    overflow: visible;
-    white-space: nowrap;
-  }
+    overflow: hidden;
+    }
   
   .weather {
     /* animation properties */
