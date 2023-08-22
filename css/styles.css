@@ -177,10 +177,8 @@
   }
 
   .text {
-    font-size: 80px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #3A1240;
+    font-size: 0.67em;
+    font-weight: bold;
     animation: animate_text 30s linear infinite; /* The animation property */
   }
 
