@@ -298,5 +298,12 @@
   .timeInfo{
     font-size: 0.8em;
   }
+
+  .gateNumber{
+    position:relative;
+    top: 18px;
+    right: 20px;
+  }
+
 }
   

@@ -21,7 +21,7 @@ var flightAPI = "66dab4b1-0c5b-415f-ae72-66d9f8e93a59";
 // }
 
 function updateScreens(){
-    
+
 }
 
 
@@ -125,4 +125,4 @@ function airportLookup(airportIataCode){
 }
 
 pullWeather();
-pullFlight();
+// pullFlight();
