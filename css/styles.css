@@ -290,5 +290,13 @@
       }
     } */
 
+@media(max-width: 450px){
+  .destination{
+    font-size: 0.8em;
+  }
 
+  .timeInfo{
+    font-size: 0.8em;
+  }
+}
   
