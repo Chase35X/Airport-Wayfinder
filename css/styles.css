@@ -156,56 +156,33 @@
 
   /* Scroll Text */
 
-  .weatherInfo {
-    border: 3px solid rgb(127, 224, 135);
-    border-radius: 5px;
+  .scrolling_text {
+    width: 100%;
     overflow: hidden;
-    }
-  
-  .weather {
-    /* animation properties */
-    -moz-transform: translateX(100%);
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-    
-    -moz-animation: my-animation 15s linear infinite;
-    -webkit-animation: my-animation 15s linear infinite;
-    animation: my-animation 15s linear infinite;
+    display: flex;
+    white-space: nowrap;
   }
-  
-  /* for Firefox */
-  @-moz-keyframes my-animation {
-    from { -moz-transform: translateX(100%); }
-    to { -moz-transform: translateX(-100%); }
+
+  .text span {
+  margin: 0 40px;
   }
-  
-  /* for Chrome */
-  @-webkit-keyframes my-animation {
-    from { -webkit-transform: translateX(100%); }
-    to { -webkit-transform: translateX(-100%); }
-  }
-  
-  @keyframes my-animation {
+
+  @keyframes animate_text {
     from {
-      -moz-transform: translateX(100%);
-      -webkit-transform: translateX(100%);
-      transform: translateX(100%);
+      transform: translate3d(0, 0, 0);
     }
     to {
-      -moz-transform: translateX(-100%);
-      -webkit-transform: translateX(-100%);
-      transform: translateX(-100%);
+      transform: translate3d(-100%, 0, 0);
     }
   }
 
-  .weather, .notification {
-    font-size: 0.67em;
+  .text {
+    font-size: 80px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #3A1240;
+    animation: animate_text 30s linear infinite; /* The animation property */
   }
-
-  /* .weatherInfo img {
-    width: 10px;
-    height: 40px;
-  } */
 
   /* Notification */
 
