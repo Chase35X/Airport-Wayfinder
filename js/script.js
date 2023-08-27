@@ -1,3 +1,4 @@
+
 var w = window.innerWidth;
 var h = window.innerHeight;
 
@@ -80,9 +81,7 @@ function pullWeather(block1, block2, block3, block4){
     request.open("GET", "https://api.weatherapi.com/v1/current.json?key=7d13921413274920be4210715231908&q=" + block1.arrivalCity + "&aqi=no");
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
             console.log(data.location.name);
 
@@ -92,7 +91,6 @@ function pullWeather(block1, block2, block3, block4){
             var conditionIcon = data.current.condition.icon;
 
             block1.weather = "Weather in " + location + ": " + temp + "° F and " + condition;
-            console.log(text);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -101,9 +99,7 @@ function pullWeather(block1, block2, block3, block4){
     request.open("GET", "https://api.weatherapi.com/v1/current.json?key=7d13921413274920be4210715231908&q=" + block2.arrivalCity + "&aqi=no");
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
             console.log(data.location.name);
 
@@ -113,7 +109,6 @@ function pullWeather(block1, block2, block3, block4){
             var conditionIcon = data.current.condition.icon;
 
             block2.weather = "Weather in " + location + ": " + temp + "° F and " + condition;
-            console.log(text);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -122,9 +117,7 @@ function pullWeather(block1, block2, block3, block4){
     request.open("GET", "https://api.weatherapi.com/v1/current.json?key=7d13921413274920be4210715231908&q=" + block3.arrivalCity + "&aqi=no");
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
             console.log(data.location.name);
 
@@ -134,7 +127,6 @@ function pullWeather(block1, block2, block3, block4){
             var conditionIcon = data.current.condition.icon;
 
             block3.weather = "Weather in " + location + ": " + temp + "° F and " + condition;
-            console.log(text);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -143,9 +135,7 @@ function pullWeather(block1, block2, block3, block4){
     request.open("GET", "https://api.weatherapi.com/v1/current.json?key=7d13921413274920be4210715231908&q=" + block4.arrivalCity + "&aqi=no");
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
             console.log(data.location.name);
 
@@ -155,7 +145,6 @@ function pullWeather(block1, block2, block3, block4){
             var conditionIcon = data.current.condition.icon;
 
             block4.weather = "Weather in " + location + ": " + temp + "° F and " + condition;
-            console.log(text);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -169,15 +158,9 @@ function pullFlights(block1, block2, block3, block4){
     request.open("GET", "https://airlabs.co/api/v9/flights?api_key=" + flightAPI + "&airline_icao=JBU&_view=array");
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
-            console.log();
-
             
-            console.log(data);
-
             block1.flightIataCode = data.response[0].flight_iata;
             block1.flightNumber = data.response[0].flight_number;
             block1.arrivalAirportIataCode = data.response[0].arr_iata;
@@ -194,13 +177,6 @@ function pullFlights(block1, block2, block3, block4){
             block4.flightNumber = data.response[3].flight_number;
             block4.arrivalAirportIataCode = data.response[3].arr_iata;
 
-            for(var i = 0; i<4; i++){
-                var flightCode = data.response[i].flight_iata;
-                var arrivalAirline = data.response[i].arr_iata;
-                console.log(flightCode);
-                pullFlightInfo(flightCode);
-                airportLookup(arrivalAirline);
-            }
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -208,24 +184,23 @@ function pullFlights(block1, block2, block3, block4){
 }
 
 function pullFlightInfo(block1, block2, block3, block4){
+
+    console.log(block4);
+    console.log(block3);
+    console.log(block3.arrivalAirportIataCode);
+
     let request = new XMLHttpRequest();
     request.open("GET", "https://airlabs.co/api/v9/flight?flight_iata=" + block1.flightIataCode + "&api_key=" + flightAPI);
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
-            console.log();
 
             var arrivalAirportIataCode = data.response.arr_iata;
-            console.log(arrivalAirportIataCode);
+            console.log("Arrival Airport Code: " + arrivalAirportIataCode);
 
             block1.gateNumber = data.response.dep_gate;
             block1.departureTime = data.response.dep_time;
-
-            console.log(gateNumber);
-            console.log(departureTime);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -234,14 +209,11 @@ function pullFlightInfo(block1, block2, block3, block4){
     request.open("GET", "https://airlabs.co/api/v9/flight?flight_iata=" + block2.flightIataCode + "&api_key=" + flightAPI);
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
-            console.log();
 
             var arrivalAirportIataCode = data.response.arr_iata;
-            console.log(arrivalAirportIataCode);
+            console.log("Arrival Airport Code: " + arrivalAirportIataCode);
 
             block2.gateNumber = data.response.dep_gate;
             block2.departureTime = data.response.dep_time;
@@ -256,14 +228,11 @@ function pullFlightInfo(block1, block2, block3, block4){
     request.open("GET", "https://airlabs.co/api/v9/flight?flight_iata=" + block3.flightIataCode + "&api_key=" + flightAPI);
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
-            console.log();
 
             var arrivalAirportIataCode = data.response.arr_iata;
-            console.log(arrivalAirportIataCode);
+            console.log("Arrival Airport Code: " + arrivalAirportIataCode);
 
             block3.gateNumber = data.response.dep_gate;
             block3.departureTime = data.response.dep_time;
@@ -275,17 +244,18 @@ function pullFlightInfo(block1, block2, block3, block4){
         }
     }
 
+    console.log(block3);
+    console.log(block3.arrivalAirportIataCode);
     request.open("GET", "https://airlabs.co/api/v9/flight?flight_iata=" + block4.flightIataCode + "&api_key=" + flightAPI);
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
+            console.log(request);
             var data = JSON.parse(request.response);
-            console.log();
+            console.log(data);
 
             var arrivalAirportIataCode = data.response.arr_iata;
-            console.log(arrivalAirportIataCode);
+            console.log("Arrival Airport Code: " + arrivalAirportIataCode);
 
             block4.gateNumber = data.response.dep_gate;
             block4.departureTime = data.response.dep_time;
@@ -305,14 +275,10 @@ function airportLookup(block1, block2, block3, block4){
     request.open("GET", "https://airlabs.co/api/v9/airports?iata_code=" + block1.arrivalAirportIataCode + "&api_key=" + flightAPI);
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
-            console.log();
 
             block1.arrivalCity = data.response.city;
-            console.log(arrivalCity);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -321,14 +287,10 @@ function airportLookup(block1, block2, block3, block4){
     request.open("GET", "https://airlabs.co/api/v9/airports?iata_code=" + block2.arrivalAirportIataCode + "&api_key=" + flightAPI);
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
-            console.log();
 
             block2.arrivalCity = data.response.city;
-            console.log(arrivalCity);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -337,14 +299,10 @@ function airportLookup(block1, block2, block3, block4){
     request.open("GET", "https://airlabs.co/api/v9/airports?iata_code=" + block3.arrivalAirportIataCode + "&api_key=" + flightAPI);
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
-            console.log();
 
             block3.arrivalCity = data.response.city;
-            console.log(arrivalCity);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
@@ -353,14 +311,10 @@ function airportLookup(block1, block2, block3, block4){
     request.open("GET", "https://airlabs.co/api/v9/airports?iata_code=" + block4.arrivalAirportIataCode + "&api_key=" + flightAPI);
     request.send();
     request.onload = () => {
-        console.log(request);
         if(request.status==200){
-            console.log(JSON.parse(request.response));
             var data = JSON.parse(request.response);
-            console.log();
 
             block4.arrivalCity = data.response.city;
-            console.log(arrivalCity);
         }else{
             console.log(`error ${request.status} ${request.statusText}`)
         }
