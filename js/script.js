@@ -77,6 +77,11 @@ function onLoad(){
 
 
 function pullWeather(block1, block2, block3, block4){
+    console.log(block1.arrivalCity);
+    console.log(block2.arrivalCity);
+
+    console.log(block3.arrivalCity);
+
     let request = new XMLHttpRequest();
     request.open("GET", "https://api.weatherapi.com/v1/current.json?key=7d13921413274920be4210715231908&q=" + block1.arrivalCity + "&aqi=no");
     request.send();
